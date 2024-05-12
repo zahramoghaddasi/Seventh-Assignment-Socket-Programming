@@ -1,18 +1,32 @@
 # Seventh-Assignment-Socket-Programming
 
 ## Introduction
-Welcome to your 7th assignment! This assignment focuses on building a **client-server** file transfer system using **socket programming** in Java. The goal is to create a reliable and efficient mechanism for uploading and downloading files between a client and a server.
+Welcome to your 7th assignment! This assignment focuses on building a **client-server** file transfer system using **socket programming** in Java. The goal is to create a reliable and efficient mechanism for sending text messages and transferring text files between clients.
 
 ## Assignment Overview
-In this assignment, you will implement a file transfer application with the following key features:
+In this assignment, you will implement a file transfer application with the following two phases:
 
-1. Client-Server Architecture: The application follows a client-server model, where the server manages incoming client connections and handles file transfers.
+### Phase 1: Sending Text Messages
+In this phase, you will create a client-server application where clients can send text messages to each other. The key features of this phase include:
 
-2. File Upload: Clients can upload files to the server by specifying the file's name and destination directory on the server.
+1. Client-Server Architecture: The application follows a client-server model, where the server manages incoming client connections and handles message routing.
 
-3. File Download: Clients can request files from the server for download by providing the file's name and location.
+2. Sending Messages: Clients can select the recipient client and send text messages to them.
 
-4. Error Handling and Reliability: Implement mechanisms to handle errors and ensure the reliability of file transfers. Consider verifying the integrity of transferred files and handling network interruptions or failures.
+3. Error Handling and Reliability: Implement mechanisms to handle errors and ensure reliable message delivery.
+
+### Phase 2: Transferring Text Files
+In this phase, you will extend the functionality of the application to allow clients to transfer text files between each other. The key features of this phase include:
+
+1. File Upload: Clients can provide the address of a text file and send it to another client.
+
+2. File Download: Clients can receive text files from other clients based on the provided address.
+
+3. Address Formats:
+   - For Linux/Mac: Use the absolute path of the file, e.g., `/home/user/Documents/file.txt`.
+   - For Windows: Use the absolute path of the file, e.g., `C:\Users\User\Documents\file.txt`.
+
+4. Error Handling and Reliability: Implement mechanisms to handle errors and ensure reliable file transfer.
 
 5. Progress Tracking: Provide a way to track the progress of file transfers, allowing clients to monitor the upload/download progress. (Considering the fact that you know how to use JavaFX, implementing this part with JavaFX is welcomed!)
 
@@ -29,9 +43,9 @@ To begin working on the assignment, follow these steps:
 
 3. Implement the client-side and server-side code as per the assignment requirements. Refer to the provided comments and any additional guidelines mentioned in the code.
 
-4. Test your implementation thoroughly to ensure correctness and robustness. Consider edge cases, error scenarios, and concurrent file transfers.
+4. Test your implementation thoroughly to ensure correctness and robustness. Consider edge cases, error scenarios, and concurrent operations.
 
-6. (Optional) If you choose to implement a GUI, design an intuitive interface that allows users to initiate transfers, view progress, manage files effectively, and more! The limit is your imagination.
+6. (Optional) If you choose to implement a GUI, design an intuitive interface that allows users to interact with the application easily. The limit is your imagination.
 
 7. Though writing documentation for this assignment is not necessary (and won't be given any extra points), writing one will first help the mentors understand how you have worked throughout the project and second, make your code more comprehensible for others (if you plan to keep this assignment on your GitHub account).
 
