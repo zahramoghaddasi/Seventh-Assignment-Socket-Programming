@@ -117,4 +117,4 @@ When you have completed the assignment, please prepare your submission as follow
 ## Troubleshooting
 If you encounter any issues or have questions regarding the assignment, please reach out to your mentors for assistance.
 
-Best regards.
+Best regards :)
