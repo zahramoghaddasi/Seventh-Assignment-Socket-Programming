@@ -11,12 +11,76 @@ In this task, the server will handle requests from multiple clients to send text
 
 Additionally, it is recommended to implement mechanisms to handle errors and ensure reliable message delivery.
 
+#### Client Code Sample
+```java
+public class Client {
+    private static final String SERVER_IP = "localhost";
+    private static final int SERVER_PORT = 12345;
+
+    public static void main(String[] args) {
+        try {
+            Socket socket = new Socket(SERVER_IP, SERVER_PORT);
+
+            // Input and output streams
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+
+            // Task 1: Sending Text Messages in a Group Chat
+            // Implement the logic to send and receive text messages here
+
+            // Task 2: Downloading Text Files from the Server
+            // Implement the logic to download text files here
+
+            // Close the socket
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
 ### Task 2: Downloading Text Files from the Server
 In this task, you will extend the functionality of the application to allow clients to download text files from the server.
 
 Ensure that the client is able to first see the list of available files and then select one to download.
 
 Once the file is downloaded, the name and contents of the file will be displayed on the client side.
+
+#### Server Code Sample
+```java
+public class Server {
+    private static final int SERVER_PORT = 12345;
+
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
+            System.out.println("Server started on port " + SERVER_PORT);
+
+            while (true) {
+                Socket socket = serverSocket.accept();
+                System.out.println("Client connected: " + socket);
+
+                // Input and output streams
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+
+                // Task 1: Sending Text Messages in a Group Chat
+                // Implement the logic to handle text messages from clients here
+
+                // Task 2: Downloading Text Files from the Server
+                // Implement the logic to send text files to clients here
+
+                // Close the socket
+                socket.close();
+                System.out.println("Client disconnected: " + socket);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
 ## Getting Started
 To begin working on the assignment, follow these steps:
@@ -35,6 +99,8 @@ To begin working on the assignment, follow these steps:
 
 - Progress Tracking: Provide a way to track the progress of file transfers, allowing clients to monitor the download progress. (Considering the fact that you know how to use JavaFX, implementing this part with JavaFX is welcomed!)
 
+- Server Log: Implement a server log feature to record important events and actions on the server-side for debugging and monitoring purposes.
+
 - Although writing documentation for this assignment is not necessary (and won't earn extra points), writing one will help the mentors understand how you have worked throughout the project. Additionally, it will make your code more comprehensible for others if you plan to keep this assignment on your GitHub account.
 
 ## Submission
@@ -51,4 +117,4 @@ When you have completed the assignment, please prepare your submission as follow
 ## Troubleshooting
 If you encounter any issues or have questions regarding the assignment, please reach out to your mentors for assistance.
 
-Best regards :)
+Best regards.
