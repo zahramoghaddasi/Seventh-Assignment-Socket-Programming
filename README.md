@@ -11,6 +11,13 @@ In this task, the server will handle requests from multiple clients to send text
 
 Additionally, it is recommended to implement mechanisms to handle errors and ensure reliable message delivery.
 
+### Task 2: Downloading Text Files from the Server
+In this task, you will extend the functionality of the application to allow clients to download text files from the server.
+
+Ensure that the client is able to first see the list of available files and then select one to download.
+
+Once the file is downloaded, the name and contents of the file will be displayed on the client side.
+
 #### Client Code Sample
 ```java
 public class Client {
@@ -40,12 +47,7 @@ public class Client {
 }
 ```
 
-### Task 2: Downloading Text Files from the Server
-In this task, you will extend the functionality of the application to allow clients to download text files from the server.
 
-Ensure that the client is able to first see the list of available files and then select one to download.
-
-Once the file is downloaded, the name and contents of the file will be displayed on the client side.
 
 #### Server Code Sample
 ```java
