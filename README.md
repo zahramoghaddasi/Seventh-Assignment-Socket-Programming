@@ -9,6 +9,8 @@ The assignment comprises two main tasks that the server needs to handle.
 ### Task 1: Group Chat - Sending Text Messages
 In this task, the server will handle requests from multiple clients to send text messages in a group chat. Each client will be able to read the message content and the name of the sender in their own terminal. (Make sure that you are using sockets to transfer these massages between the clients and the server)
 
+This task is something like the broadcasting practice you saw in you TA's session.
+
 ### Task 2: File Transfer - Downloading Text Files
 In this task, you will extend the functionality of the application to allow clients to download text files from the server.
 
@@ -35,13 +37,16 @@ Here is a suggested structure for your code:
 5. `ChatHandler` Class: This class will handle the group chat functionality. It will receive messages from clients and broadcast them to all connected clients.
     - `ChatHandler.java`: This class will manage the group chat functionality, including sending/receiving messages between clients and broadcasting messages to connected clients.
 
+
 To implement this structure, you can use Java's Socket and ServerSocket classes for establishing connections between the server and clients. You can also use InputStream and OutputStream to send/receive data between the server and clients.
 
-When a client connects to the server, the server can prompt the client to choose between file download or group chat options. Based on the client's choice, the server will delegate the request to the appropriate handler (i.e., FileHandler or ChatHandler).
+When a client connects to the server, the server can utilize a request-response system to prompt the client to choose between file download or group chat options. The client sends a request specifying their choice, and the server, acting as the responder, processes the request using the appropriate handler, such as the FileHandler or ChatHandler, through the request-response mechanism.
 
-For file downloads, the server can provide a list of available files, and once the client selects a file, the server will use the FileHandler to send the file to the client.
+For file downloads, the server employs the FileHandler to provide the client with a list of available files. Upon receiving the client's selection request, the server initiates a request-response interaction, where the FileHandler retrieves and sends the requested file to the client, ensuring a seamless and controlled file transfer process.
 
-For group chat, the server will use the ChatHandler to facilitate communication between connected clients. The ChatHandler will receive messages from clients and broadcast them to all connected clients.
+In the case of group chat, the server utilizes the ChatHandler to facilitate communication among connected clients. When a client sends a chat message, it triggers a request-response flow, where the ChatHandler receives the message request from the client, processes it, and then broadcasts the message to all connected clients. This allows for an efficient and coordinated group chat experience.
+
+By incorporating a request-response system, the server and clients establish a structured and organized communication flow. The clients make requests, specifying their choices or actions, and the server responds accordingly, ensuring proper handling and coordination of file downloads and group chat functionality.
 
 **Note that the structure above is only a suggestion and you can implement any other structure you prefer. But make sure that the connection between the server and the clients are made possible through using sockets and a server log feature is implemented as well.**
 
@@ -86,6 +91,8 @@ If you encounter any issues or have questions regarding the assignment, please r
 Consider watching the following videos to grasp a better understanding of how socket programming in Java works:
 - [Java Socket Programming Client Server Messenger by WittCode](https://youtu.be/gchR3DpY-8Q?si=dSyRSnFmB6fLIpej)
 - [Java Socket Programming - Multiple Clients Chat by WittCode](https://www.youtube.com/watch?v=gLfuZrrfKes&t=739s)
+- [An IBM documentation on the **request-response design pattern**](https://developer.ibm.com/articles/awb-request-response-messaging-pattern-introduction/)
+- [A medium article on **request-response design pattern**](https://ritikchourasiya.medium.com/request-response-a-deep-dive-into-backend-communication-design-pattern-47d641d9eb90)
 
 
 Best regards,
