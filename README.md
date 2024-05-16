@@ -4,7 +4,7 @@
 Welcome to your 7th assignment! This assignment focuses on building a CLI **client-server** structured application using **socket programming** in Java. The goal is to create a reliable and efficient mechanism for sending text messages between multiple clients and transferring text files from the server side to the client side.
 
 ## Assignment Overview
-The server will be able to handle **2 main tasks**.
+The server shall be able to handle **2 main tasks**.
 
 ### Task 1: Sending Text Messages in a Group Chat
 In this task, the server will handle requests from multiple clients to send text messages in a group chat. Each client will be able to read the body of the message and the name of the sender in their own terminal.
@@ -82,6 +82,8 @@ public class Server {
 }
 ```
 
+Note that an important feature that must be implemented is server report (a.k.a server log). The server log feature to record important events and actions on the server-side for debugging and monitoring purposes.
+
 ## Getting Started
 To begin working on the assignment, follow these steps:
 
@@ -98,8 +100,6 @@ To begin working on the assignment, follow these steps:
 - User Interface: You may choose to add a graphical user interface (GUI) to enhance the user experience. Java's Swing or JavaFX libraries can be used for this purpose.
 
 - Progress Tracking: Provide a way to track the progress of file transfers, allowing clients to monitor the download progress. (Considering the fact that you know how to use JavaFX, implementing this part with JavaFX is welcomed!)
-
-- Server Log: Implement a server log feature to record important events and actions on the server-side for debugging and monitoring purposes.
 
 - Although writing documentation for this assignment is not necessary (and won't earn extra points), writing one will help the mentors understand how you have worked throughout the project. Additionally, it will make your code more comprehensible for others if you plan to keep this assignment on your GitHub account.
 
