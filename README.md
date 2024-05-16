@@ -53,4 +53,11 @@ When you have completed the assignment, please prepare your submission as follow
 ## Troubleshooting
 If you encounter any issues or have questions regarding the assignment, please reach out to your mentors for assistance.
 
-Best regards :)
+## Some Resources for Further Studying
+Consider watching the following videos to grasp a better understanding of how socket programming in Java works:
+- [Java Socket Programming Client Server Messenger by WittCode](https://youtu.be/gchR3DpY-8Q?si=dSyRSnFmB6fLIpej)
+- [Java Socket Programming - Multiple Clients Chat by WittCode](https://www.youtube.com/watch?v=gLfuZrrfKes&t=739s)
+
+
+Best regards,
+Shayan :)
