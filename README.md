@@ -58,7 +58,7 @@ To begin working on the assignment, follow these steps:
 
 2. Clone the forked repository from your own GitHub account to your local machine.
 
-3. The repository contains a README file and several text files (in the `data` directory), each storing the lyrics of a song.
+3. The repository contains a README file and several text files (reachable through the path: `seventh_assignment/src/main/Server/data`), each storing the lyrics of a song.
 
 4. Implement the client-side and server-side code as per the assignment requirements. Refer to the provided code comments and any additional guidelines mentioned in the code.
 
