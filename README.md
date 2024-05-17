@@ -1,6 +1,29 @@
 # Socket Programming Assignment - Group Chat(💬) + File Transfer (📁)
 
-[TOC]
+# Table of Contents
+
+1. [Introduction](#introduction)
+2. [Objectives](#objectives)
+3. [Assignment Overview](#assignment-overview)
+   - [Task 1: Group Chat (Sending Text Messages)](#task-1-group-chat-sending-text-messages)
+      - [Task 1 Summary](#task-1-summary)
+   - [Task 2: File Transfer (Downloading Text Files from the Server)](#task-2-file-transfer-downloading-text-files-from-the-server)
+      - [Task 2 Summary](#task-2-summary)
+4. [Project Breakdown](#project-breakdown)
+   - [1. `Server` Class](#server-class)
+   - [2. `ServerLogHandler` Class](#serverloghandler-class)
+   - [3. `Client` Class](#client-class)
+   - [4. `FileHandler` Class](#filehandler-class)
+   - [5. `ChatHandler` Class](#chathandler-class)
+   - [Application's `Client-Server API`](#applications-client-server-api)
+      - [6.1 Request](#61-request)
+      - [6.2 Response](#62-response)
+5. [Notes](#notes)
+6. [Getting Started](#getting-started)
+7. [Bonus Features](#bonus-features)
+8. [Submission](#submission)
+9. [Troubleshooting](#troubleshooting)
+10. [Some Resources for Further Studying](#some-resources-for-further-studying)
 
 ## Introduction 📚
 Welcome to your 7th assignment! This assignment focuses on creating a command-line interface (CLI) application using **socket programming** concepts in Java. The objective is to create a robust and efficient mechanism for sending text messages between multiple clients and transferring text files from the server side to the client side.
@@ -154,7 +177,6 @@ Consider watching the following videos and reading the blogs to grasp a better u
 - A high quality place to learn how to work and create json in java: (I highly recommend you to use Jackson library or JSON.org, Since other libraries seem to be deprecated by now.)
   -  [Working with jackson](https://jenkov.com/tutorials/java-json/jackson-installation.html)
   - [JSON.org](https://www.baeldung.com/java-org-json)
-
 
 Best regards<br>
 Shayan and Mohammad 😎
