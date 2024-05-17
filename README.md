@@ -1,15 +1,15 @@
 # Socket Programming Assignment - Group Chat + File Transfer 
 
-## Introduction
+## Introduction 📚
 Welcome to your 7th assignment! This assignment focuses on creating a command-line interface (CLI) application using **socket programming** concepts in Java. The objective is to create a robust and efficient mechanism for sending text messages between multiple clients and transferring text files from the server side to the client side.
 
-## Objectives
+## Objectives 🔎
 
 - Reviewing the concepts of socket programming
 - Creating a local server with the ability to handle incoming requests from clients
 - Enabling clients to send massages in the group chat or download text files from the server
 
-## Assignment Overview
+## Assignment Overview 💪
 The assignment comprises two main tasks as following:
 
 ### Task 1: Group Chat (Sending Text Messages)
@@ -103,7 +103,7 @@ To begin working on the assignment, follow these steps:
 
 5. Implement the client-side and server-side code as per the assignment requirements. Refer to the provided code comments and any additional guidelines mentioned in the code.
 
-## Bonus Features
+## Bonus Features 🎉
 Consider implementing the following bonus features to enhance your application:
 
 - User Interface: Add a graphical user interface (GUI) using Java's Swing or JavaFX libraries to improve the user experience.
@@ -114,7 +114,7 @@ Consider implementing the following bonus features to enhance your application:
 
 **Of course implementing any other features are welcomed! The limit is your imagination!**
 
-## Submission
+## Submission 🚀
 When you have completed the assignment, please prepare your submission as follows:
 
 1. Include all relevant Java source code files for the client and server components, along with the text files.
@@ -128,7 +128,7 @@ When you have completed the assignment, please prepare your submission as follow
 ## Troubleshooting
 If you encounter any issues or have questions regarding the assignment, please reach out to your mentors for assistance.
 
-## Some Resources for Further Studying
+## Some Resources for Further Studying 🤓
 Consider watching the following videos to grasp a better understanding of how socket programming in Java works:
 - [Java Socket Programming Client Server Messenger by WittCode](https://youtu.be/gchR3DpY-8Q?si=dSyRSnFmB6fLIpej)
 - [Java Socket Programming - Multiple Clients Chat by WittCode](https://www.youtube.com/watch?v=gLfuZrrfKes&t=739s)
