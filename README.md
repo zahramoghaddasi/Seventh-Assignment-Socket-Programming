@@ -84,7 +84,7 @@ A response must have these features:
 - Again, it is up to you to design the response's format. Similar to a request, a response can also be a JSON string, a string or whatever you think suits best
 
 #### Task 2 in Summery 🔫
-NO! I won't write a summery for this one! Just read the whole part again if you happen to encounter any problems!
+Absolutely not! I shall not embark on the arduous task of concocting a summary for this  masterpiece! It's like attempting to tame a wild unicorn, a true feat of mythical proportions! Simply revisit the entire segment in case you stumble upon any predicaments, and may the forces of academic fortune be ever in your favor!
 
 ## Notes 📝
 - Each request received from the client must be answered with a response from the server
