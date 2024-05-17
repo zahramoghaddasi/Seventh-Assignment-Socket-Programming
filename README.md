@@ -1,5 +1,7 @@
 # Socket Programming Assignment - Group Chat(💬) + File Transfer (📁)
 
+[TOC]
+
 ## Introduction 📚
 Welcome to your 7th assignment! This assignment focuses on creating a command-line interface (CLI) application using **socket programming** concepts in Java. The objective is to create a robust and efficient mechanism for sending text messages between multiple clients and transferring text files from the server side to the client side.
 
@@ -134,12 +136,24 @@ When you have completed the assignment, please prepare your submission as follow
 If you encounter any issues or have questions regarding the assignment, please reach out to your mentors for assistance.
 
 ## Some Resources for Further Studying 🤓
-Consider watching the following videos adn reading the blogs to grasp a better understanding of how socket programming in Java works:
+Consider watching the following videos and reading the blogs to grasp a better understanding of how socket programming in Java works:
 - [Java Socket Programming Client Server Messenger by WittCode](https://youtu.be/gchR3DpY-8Q?si=dSyRSnFmB6fLIpej)
 - [Java Socket Programming - Multiple Clients Chat by WittCode](https://www.youtube.com/watch?v=gLfuZrrfKes&t=739s)
 - [An IBM documentation on the **request-response design pattern**](https://developer.ibm.com/articles/awb-request-response-messaging-pattern-introduction/)
 - [A medium article on **request-response design pattern**](https://ritikchourasiya.medium.com/request-response-a-deep-dive-into-backend-communication-design-pattern-47d641d9eb90)
 - [A brief intro to request-response design pattern](https://youtu.be/TD1wxsJYAP0?si=G5Xq2WM5uST0e53E)
+- A high quality place to learn how to transmit data between sockets:
+  - [InputStream](https://jenkov.com/tutorials/java-io/inputstream.html)
+  - [OutputStream](https://jenkov.com/tutorials/java-io/outputstream.html)
+  - [DataInputStream](https://jenkov.com/tutorials/java-io/datainputstream.html)
+  - [DataOutputStream](https://jenkov.com/tutorials/java-io/dataoutputstream.html)
+  - [FileInputStream](https://jenkov.com/tutorials/java-io/fileinputstream.html)
+  - [FileOutputStream](https://jenkov.com/tutorials/java-io/fileoutputstream.html)
+  - [PrintWriter](https://jenkov.com/tutorials/java-io/printwriter.html)
+
+- A high quality place to learn how to work and create json in java: (I highly recommend you to use Jackson library or JSON.org, Since other libraries seem to be deprecated by now.)
+  -  [Working with jackson](https://jenkov.com/tutorials/java-json/jackson-installation.html)
+  - [JSON.org](https://www.baeldung.com/java-org-json)
 
 
 Best regards<br>
