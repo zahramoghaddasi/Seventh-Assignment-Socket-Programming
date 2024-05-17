@@ -25,7 +25,7 @@ Welcome to your 7th assignment! This assignment focuses on creating a command-li
 - Enabling clients to send massages in the group chat or download text files from the server
 - Designing a request-response mechanism from scratch
 
-## Assignment Overview 💪
+## Assignment Overview 👀   
 The assignment comprises two main tasks as following:
 
 ### Task 1: Group Chat (Sending Text Messages) 💬
