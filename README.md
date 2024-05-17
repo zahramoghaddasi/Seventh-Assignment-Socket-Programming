@@ -1,4 +1,4 @@
-# Socket Programming Assignment - Group Chat + File Transfer 
+# Socket Programming Assignment - Group Chat(💬) + File Transfer (📁)
 
 ## Introduction 📚
 Welcome to your 7th assignment! This assignment focuses on creating a command-line interface (CLI) application using **socket programming** concepts in Java. The objective is to create a robust and efficient mechanism for sending text messages between multiple clients and transferring text files from the server side to the client side.
@@ -8,27 +8,28 @@ Welcome to your 7th assignment! This assignment focuses on creating a command-li
 - Reviewing the concepts of socket programming
 - Creating a local server with the ability to handle incoming requests from clients
 - Enabling clients to send massages in the group chat or download text files from the server
+- Designing a request-response mechanism from scratch
 
 ## Assignment Overview 💪
 The assignment comprises two main tasks as following:
 
-### Task 1: Group Chat (Sending Text Messages)
+### Task 1: Group Chat (Sending Text Messages) 💬
 In this task, the server will handle requests from clients to send text messages in a group chat. Each client shall be able to read the name of the sender of the massage with the message content in their own terminal. (Make sure that you are using sockets to transfer these massages between the clients and the server)
 
 This task is something like the **massage broadcasting** example you had in you TA's session, so to make it a bit different you are urged to implement a **chat history** feature as well.
 
 So this means that if a new client is connected to the server, he must be able to see **all the previous** chats in the group as well as the new massages being sent after his connection being stablished with the server. (**BONUS TASK: How to implement this feature in a way that a new member of the group chat can only see a limited number of the previous chats? That is, only $n$ previous massages where n is an arbitrary fix number!**)
 
-#### Task 1 in Summery
+#### Task 1 in Summery 💊
 - designing server and client side of the application in a way that users can comminate with each other through a group chat with the feature that newly joined members can see either a portion or all of the previous chats (massages sent before them joining the group chat)
 
 
-### Task 2: File Transfer - Downloading Text Files
+### Task 2: File Transfer (Downloading Text Files from the Server) 📁
 In this task, you will extend the functionality of the application you designed to allow clients to download text files from the server.
 
 Thus the client should be able to view a list of the available files on the server and select one for download. Once the file is downloaded, it should be **copied** (**NOT cut**) to a directory related specifically to the client who sent the request to download the file. (In other words, the file must be transferred though a socket from the server side to the client side can be saved somewhere on the client side)
 
-## Project Breakdown
+## Project Breakdown 🔨
 Here is a suggested structure for your code:
 
 #### 1. `Server` Class
@@ -57,7 +58,8 @@ Here is a suggested structure for your code:
     - `ChatHandler.java`
     This class will manage the group chat functionality, including sending/receiving messages between clients and broadcasting messages to connected clients.
 
-#### 6. Application's `Client-Server API`
+#### 6. Application's `Client-Server API` ⚠️
+     This part is one of the most important features of this project
 To enable effective communication between the client and server sides of the application, a well-defined and predetermined interaction mechanism is implemented. This is achieved through a series of Request-Response interactions, where the client sends requests to the server, conveying specific instructions or queries. The server processes these requests and generates appropriate responses, providing the requested information or indicating the outcome of the actions. By employing this structured request-response approach, the client and server can seamlessly exchange data and instructions, ensuring synchronized communication and facilitating efficient coordination between the two components.
 
 The designing of the API can be broken down into 2 main parts:
@@ -81,7 +83,10 @@ A response must have these features:
 - Attach appropriate data to the response based on the request. A response might contain the data a user has requested, or it might just be a boolean indicating the result of a previously sent request
 - Again, it is up to you to design the response's format. Similar to a request, a response can also be a JSON string, a string or whatever you think suits best
 
-## Notes
+#### Task 2 in Summery 🔫
+NO! I won't write a summery for this one! Just read the whole part again if you happen to encounter any problems!
+
+## Notes 📝
 - Each request received from the client must be answered with a response from the server
 - When a client connects to the server, the server can utilize the request-response system to prompt the client to choose between file download or group chat options. The client sends a request specifying their choice, and the server, acting as the responder, processes the request using the appropriate handler, such as the FileHandler or ChatHandler, through the request-response mechanism.
 - For file downloads, the server employs the FileHandler to provide the client with a list of available files. Upon receiving the client's selection request, the server initiates a request-response interaction, where the FileHandler retrieves and sends the requested file to the client, ensuring a seamless and controlled file transfer process.
@@ -90,7 +95,7 @@ A response must have these features:
 - The structure mentioned in the `Project Breakdown` section is only a suggestion and you can implement any other structure you prefer.
 
 
-## Getting Started
+## Getting Started 🏎️
 To begin working on the assignment, follow these steps:
 
 1. Fork this repository. (**DO NOT clone it! Fork it first**)
@@ -103,7 +108,7 @@ To begin working on the assignment, follow these steps:
 
 5. Implement the client-side and server-side code as per the assignment requirements. Refer to the provided code comments and any additional guidelines mentioned in the code.
 
-## Bonus Features 🎉
+## Bonus Features 🎉🎁
 Consider implementing the following bonus features to enhance your application:
 
 - User Interface: Add a graphical user interface (GUI) using Java's Swing or JavaFX libraries to improve the user experience.
@@ -125,7 +130,7 @@ When you have completed the assignment, please prepare your submission as follow
 
 4. Push your final code to the forked repository and send a PR (Pull Request) to your mentor. The submission deadline is **May 22nd (Khordad 2nd)**.
 
-## Troubleshooting
+## Troubleshooting 🤔
 If you encounter any issues or have questions regarding the assignment, please reach out to your mentors for assistance.
 
 ## Some Resources for Further Studying 🤓
@@ -137,4 +142,4 @@ Consider watching the following videos to grasp a better understanding of how so
 
 
 Best regards<br>
-Shayan 😎
+Shayan and Mohammad 😎
