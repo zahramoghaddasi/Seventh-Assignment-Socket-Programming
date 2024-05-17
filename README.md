@@ -139,6 +139,7 @@ Consider watching the following videos to grasp a better understanding of how so
 - [Java Socket Programming - Multiple Clients Chat by WittCode](https://www.youtube.com/watch?v=gLfuZrrfKes&t=739s)
 - [An IBM documentation on the **request-response design pattern**](https://developer.ibm.com/articles/awb-request-response-messaging-pattern-introduction/)
 - [A medium article on **request-response design pattern**](https://ritikchourasiya.medium.com/request-response-a-deep-dive-into-backend-communication-design-pattern-47d641d9eb90)
+- [A brief intro to request-response design pattern](https://youtu.be/TD1wxsJYAP0?si=G5Xq2WM5uST0e53E)
 
 
 Best regards<br>
