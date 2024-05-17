@@ -6,24 +6,14 @@
 2. [Objectives](#objectives-)
 3. [Assignment Overview](#assignment-overview-)
    - [Task 1: Group Chat (Sending Text Messages)](#task-1-group-chat-sending-text-messages-)
-      - [Task 1 Summary](#task-1-summary-)
    - [Task 2: File Transfer (Downloading Text Files from the Server)](#task-2-file-transfer-downloading-text-files-from-the-server-)
-      - [Task 2 Summary](#task-2-summary-)
-4. [Project Breakdown](#project-breakdown-)
-   - [1. `Server` Class](#server-class-)
-   - [2. `ServerLogHandler` Class](#serverloghandler-class-)
-   - [3. `Client` Class](#client-class-)
-   - [4. `FileHandler` Class](#filehandler-class-)
-   - [5. `ChatHandler` Class](#chathandler-class-)
-   - [Application's `Client-Server API`](#applications-client-server-api-)
-      - [6.1 Request](#61-request-)
-      - [6.2 Response](#62-response-)
+        - [Application's `Client-Server API`](#applications-client-server-api-)
 5. [Notes](#notes-)
 6. [Getting Started](#getting-started-)
 7. [Bonus Features](#bonus-features-)
 8. [Submission](#submission-)
 9. [Troubleshooting](#troubleshooting-)
-10. [Some Resources for Further Studying](#some-resources-for-further-studying-)
+10. [Resources for Further Studying](#some-resources-for-further-studying-)
 
 ## Introduction 📚
 Welcome to your 7th assignment! This assignment focuses on creating a command-line interface (CLI) application using **socket programming** concepts in Java. The objective is to create a robust and efficient mechanism for sending text messages between multiple clients and transferring text files from the server side to the client side.
@@ -50,46 +40,16 @@ So this means that if a new client is connected to the server, he must be able t
 
 
 ### Task 2: File Transfer (Downloading Text Files from the Server) 📁
-In this task, you will extend the functionality of the application you designed to allow clients to download text files from the server.
+In this task, you will extend the functionality of the application you designed to allow clients to download text files from the server.Thus the client should be able to view a list of the available files on the server and select one for download. Once the file is downloaded, it should be **copied** (**NOT cut**) to a directory related specifically to the client who sent the request to download the file. (In other words, the file must be transferred though a socket from the server side to the client side can be saved somewhere on the client side)
 
-Thus the client should be able to view a list of the available files on the server and select one for download. Once the file is downloaded, it should be **copied** (**NOT cut**) to a directory related specifically to the client who sent the request to download the file. (In other words, the file must be transferred though a socket from the server side to the client side can be saved somewhere on the client side)
-
-## Project Breakdown 🔨
-Here is a suggested structure for your code:
-
-#### 1. `Server` Class
- This class will handle the server-side operations. It will be responsible for accepting incoming client connections, managing file downloads, facilitating group chat functionality and giving a report (or server log).
-- `Server.java`
-    This class will create a ServerSocket and **listen** for incoming client connections. It will spawn a new thread for each connected client to handle their requests concurrently.
-
-#### 2. `ServerLogHandler` Class
- This class will handle logging operations on the server side. It will be responsible for creating, writing, and managing the server log file.
-
-- `ServerLogHandler.java`
-    This class will provide methods to log server events, such as client connections, file downloads, and chat messages.
-
-#### 3. `Client` Class
- This class will handle the client-side operations. It will connect to the server, interact with the user for file downloads or group chat, and send/receive messages to/from the server.
-- `Client.java`
-    This class will represent a client and handle the interaction with the server. It will establish a socket connection with the server and send/receive messages.
-
-#### 4. `FileHandler` Class
- This class will handle file-related operations, such as downloading files from the server to the client.
-- `FileHandler.java`
-    This class will provide methods to download files from the server and save them on the client's machine.
-
-#### 5. `ChatHandler` Class
- This class will handle the group chat functionality. It will receive messages from clients and broadcast them to all connected clients.
-- `ChatHandler.java`
-This class will manage the group chat functionality, including sending/receiving messages between clients and broadcasting messages to connected clients.
-
-#### 6. Application's `Client-Server API` ⚠️
+Also, you must design the **client-server API** of this project which is explained below: 
+#### Application's `Client-Server API` ⚠️
      This part is one of the most important features of this project
 To enable effective communication between the client and server sides of the application, a well-defined and predetermined interaction mechanism is implemented. This is achieved through a series of Request-Response interactions, where the client sends requests to the server, conveying specific instructions or queries. The server processes these requests and generates appropriate responses, providing the requested information or indicating the outcome of the actions. By employing this structured request-response approach, the client and server can seamlessly exchange data and instructions, ensuring synchronized communication and facilitating efficient coordination between the two components.
 
 The designing of the API can be broken down into 2 main parts:
 
-##### - 6.1 Request
+##### Request
 
 A request must have these features:
 
@@ -99,7 +59,7 @@ A request must have these features:
 - It is up to you to design the request's format. A request can be a JSON string which is easy to send on a socket, a string or any other data that can be sent through a server socket.
 
 
-##### - 6.2 Response
+##### Response
 
 A response must have these features:
 
@@ -113,11 +73,11 @@ Absolutely not! I shall not embark on the arduous task of concocting a summary f
 
 ## Notes 📝
 - Each request received from the client must be answered with a response from the server
-- When a client connects to the server, the server can utilize the request-response system to prompt the client to choose between file download or group chat options. The client sends a request specifying their choice, and the server, acting as the responder, processes the request using the appropriate handler, such as the FileHandler or ChatHandler, through the request-response mechanism.
-- For file downloads, the server employs the FileHandler to provide the client with a list of available files. Upon receiving the client's selection request, the server initiates a request-response interaction, where the FileHandler retrieves and sends the requested file to the client, ensuring a seamless and controlled file transfer process.
-- In the case of group chat, the server utilizes the ChatHandler to facilitate communication among connected clients. When a client sends a chat message, it triggers a request-response flow, where the ChatHandler receives the message request from the client, processes it, and then broadcasts the message to all connected clients. This allows for an efficient and coordinated group chat experience.
-- By incorporating a request-response system, the server and clients establish a structured and organized communication flow. The clients make requests, specifying their choices or actions, and the server responds accordingly, ensuring proper handling and coordination of file downloads and group chat functionality.
-- The structure mentioned in the `Project Breakdown` section is only a suggestion and you can implement any other structure you prefer.
+- Each client request must receive a corresponding server response.
+- Upon client connection, the server prompts the client to choose between file download or group chat options, utilizing the request-response system.
+- For file downloads, the server employs the **file handler** to provide a list of available files and ensures controlled transfer upon client selection.
+- Group chat functionality is facilitated by a **chat handler**, processing and broadcasting messages to connected clients.
+- The request-response system establishes an organized communication flow, coordinating file downloads and group chat.
 
 
 ## Getting Started 🏎️
@@ -153,7 +113,7 @@ When you have completed the assignment, please prepare your submission as follow
 
 3. (Optional) If you implemented a GUI, include any necessary resources or instructions for successfully running the GUI.
 
-4. Push your final code to the forked repository and send a PR (Pull Request) to your mentor. The submission deadline is **May 22nd (Khordad 2nd)**.
+4. Push your final code to the forked repository and send a PR (Pull Request) to your mentor. The submission deadline is **May 24th (Khordad 4th)**.
 
 ## Troubleshooting 🤔
 If you encounter any issues or have questions regarding the assignment, please reach out to your mentors for assistance.
@@ -165,7 +125,8 @@ Consider watching the following videos and reading the blogs to grasp a better u
 - [An IBM documentation on the **request-response design pattern**](https://developer.ibm.com/articles/awb-request-response-messaging-pattern-introduction/)
 - [A medium article on **request-response design pattern**](https://ritikchourasiya.medium.com/request-response-a-deep-dive-into-backend-communication-design-pattern-47d641d9eb90)
 - [A brief intro to request-response design pattern](https://youtu.be/TD1wxsJYAP0?si=G5Xq2WM5uST0e53E)
-- A high quality place to learn how to transmit data between sockets:
+
+A high quality place to learn how to transmit data between sockets:
   - [InputStream](https://jenkov.com/tutorials/java-io/inputstream.html)
   - [OutputStream](https://jenkov.com/tutorials/java-io/outputstream.html)
   - [DataInputStream](https://jenkov.com/tutorials/java-io/datainputstream.html)
@@ -174,7 +135,7 @@ Consider watching the following videos and reading the blogs to grasp a better u
   - [FileOutputStream](https://jenkov.com/tutorials/java-io/fileoutputstream.html)
   - [PrintWriter](https://jenkov.com/tutorials/java-io/printwriter.html)
 
-- A high quality place to learn how to work and create json in java: (I highly recommend you to use Jackson library or JSON.org, Since other libraries seem to be deprecated by now.)
+Some links to learn how to work and create json in java: (You are highly recommended to use `Jackson` library or `JSON.org`, since other libraries seem to be deprecated by now!)
   -  [Working with jackson](https://jenkov.com/tutorials/java-json/jackson-installation.html)
   - [JSON.org](https://www.baeldung.com/java-org-json)
 
