@@ -34,29 +34,29 @@ Here is a suggested structure for your code:
 
 #### 1. `Server` Class
  This class will handle the server-side operations. It will be responsible for accepting incoming client connections, managing file downloads, facilitating group chat functionality and giving a report (or server log).
-    - `Server.java`
-     This class will create a ServerSocket and **listen** for incoming client connections. It will spawn a new thread for each connected client to handle their requests concurrently.
+- `Server.java`
+    This class will create a ServerSocket and **listen** for incoming client connections. It will spawn a new thread for each connected client to handle their requests concurrently.
 
 #### 2. `ServerLogHandler` Class
  This class will handle logging operations on the server side. It will be responsible for creating, writing, and managing the server log file.
 
-    - `ServerLogHandler.java`
-     This class will provide methods to log server events, such as client connections, file downloads, and chat messages.
+- `ServerLogHandler.java`
+    This class will provide methods to log server events, such as client connections, file downloads, and chat messages.
 
 #### 3. `Client` Class
  This class will handle the client-side operations. It will connect to the server, interact with the user for file downloads or group chat, and send/receive messages to/from the server.
-    - `Client.java`
-     This class will represent a client and handle the interaction with the server. It will establish a socket connection with the server and send/receive messages.
+- `Client.java`
+    This class will represent a client and handle the interaction with the server. It will establish a socket connection with the server and send/receive messages.
 
 #### 4. `FileHandler` Class
  This class will handle file-related operations, such as downloading files from the server to the client.
-    - `FileHandler.java`
-     This class will provide methods to download files from the server and save them on the client's machine.
+- `FileHandler.java`
+    This class will provide methods to download files from the server and save them on the client's machine.
 
 #### 5. `ChatHandler` Class
  This class will handle the group chat functionality. It will receive messages from clients and broadcast them to all connected clients.
-    - `ChatHandler.java`
-    This class will manage the group chat functionality, including sending/receiving messages between clients and broadcasting messages to connected clients.
+- `ChatHandler.java`
+This class will manage the group chat functionality, including sending/receiving messages between clients and broadcasting messages to connected clients.
 
 #### 6. Application's `Client-Server API` ⚠️
      This part is one of the most important features of this project
