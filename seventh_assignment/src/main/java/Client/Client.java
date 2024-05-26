@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class Client {
     private Socket socket;
@@ -25,23 +26,22 @@ public class Client {
            e.printStackTrace();
        }
    }
-   private void handleInput(){
-       try {
-           String message;
-
+    private void handleInput(){
+        try {
+            String message;
             while (true){
                 message = input.readLine();
                 if(message == null){
                     break;
                 }
-
-                System.out.println("[" + clientId + "] :" + message);
+                System.out.println(message);
             }
-       }
-       catch (IOException e) {
-           e.printStackTrace();
-       }
-   }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void handleOutput() {
         BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
 
@@ -49,7 +49,9 @@ public class Client {
             String message;
             while (true) {
                 message = userInput.readLine();
-                output.println(message); // Send the message to the server
+                if (message != null) {
+                    output.println("[" + clientId + "] : " + message);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,6 +60,7 @@ public class Client {
 
    public void start(){
        System.out.println("Client [" + clientId + "] Started.");
+       output.println(clientId);
 
        Thread inputThread = new Thread(this::handleInput);
        inputThread.start();
@@ -67,13 +70,16 @@ public class Client {
    }
 
 
-   public static String getClientId(){
-       return clientId;
-   }
+//   public static String getClientId(){
+//       return clientId;
+//   }
 
     public static void main(String[] args) {
         // TODO: Implement the main method to start the client
-        Client client = new Client("127.0.0.1",3000 , "zahra");
+        System.out.println("Enter your name");
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.next();
+        Client client = new Client("127.0.0.1",3000 , name);
         client.start();
     }
 }
