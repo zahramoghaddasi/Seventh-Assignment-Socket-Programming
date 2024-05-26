@@ -40,21 +40,22 @@ public class Server{
             for (String message : chatHistory) {
                 output.println(message);
             }
+
+            String joinMessage = "Client [" + clientId + "] joined the chat.";
+            chatHistory.add(joinMessage);
+            for(PrintWriter clientOutput : clientOutputs){
+                clientOutput.println(joinMessage);
+            }
+
             String message;
             while ((message = input.readLine()) != null) {
-               // System.out.println("[" + clientId + "] : " + message);
                 chatHistory.add(message);
-
                 for(PrintWriter clientOutput : clientOutputs){
                     if (clientOutput != output){
                         clientOutput.println(message);
                     }
                 }
-
-//                if(sendmessagetoClient){
-//                    sendServerMessage(message);
-//                    broadcastMessage(message);
-//                }
+                output.println(message);
             }
 
             System.out.println("Client [" + clientId + "] disconnected.");
@@ -64,6 +65,7 @@ public class Server{
             e.printStackTrace();
         }
     }
+
 //    public void broadcastMessage(String message){
 //        for (PrintWriter clientOutput : clientOutputs) {
 //            clientOutput.println(message);
