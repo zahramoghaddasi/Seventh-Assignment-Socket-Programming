@@ -22,7 +22,7 @@ public class Server{
     // private boolean sendmessagetoClient = true;
     public Server(int port){
         try {
-          serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(port);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -43,9 +43,9 @@ public class Server{
 
             String joinMessage = "Client [" + clientId + "] joined the chat.";
             chatHistory.add(joinMessage);
-            for(PrintWriter clientOutput : clientOutputs){
-                clientOutput.println(joinMessage);
-            }
+//            for(PrintWriter clientOutput : clientOutputs){
+//                clientOutput.println(joinMessage);
+//            }
 
             String message;
             while ((message = input.readLine()) != null) {
@@ -79,18 +79,19 @@ public class Server{
     public void start(){
         System.out.println("Server started. Listening for incoming connections...");
 
-            try {
-                while (true) {
-                    Socket clientSocket = serverSocket.accept();
-                    Thread clientThread = new Thread(() -> handleClient(clientSocket));
-                    clientThread.start();
+        try {
+            while (true) {
+                Socket clientSocket = serverSocket.accept();
+                Thread clientThread = new Thread(() -> handleClient(clientSocket));
+                clientThread.start();
 
-                }
             }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    public
 
     public static void main(String[] args) {
         // TODO: Implement the main method to start the server

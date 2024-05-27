@@ -11,26 +11,27 @@ import java.util.Scanner;
 
 public class Client {
     private Socket socket;
-   private BufferedReader input;
-   private PrintWriter output;
-   private static String clientId;
+    private BufferedReader input;
+    private PrintWriter output;
+    private static String clientId;
     private boolean inChatGroup = false;
     private List<String> chatHistory = new ArrayList<>();
+    private boolean firstTime = true;
 
 
-   public Client(String Ip , int port , String clientId){
+    public Client(String Ip , int port , String clientId){
 
-       this.clientId = clientId;
+        this.clientId = clientId;
 
-       try {
-           socket = new Socket( Ip , port);
-           input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-           output = new PrintWriter(socket.getOutputStream() , true);
-       }
-       catch (IOException e) {
-           e.printStackTrace();
-       }
-   }
+        try {
+            socket = new Socket( Ip , port);
+            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            output = new PrintWriter(socket.getOutputStream() , true);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void handleInput(){
         try {
             String message;
@@ -39,9 +40,17 @@ public class Client {
                 if(message == null){
                     break;
                 }
-                if (inChatGroup) {
+                //if (inChatGroup) {
+//                    chatHistory.add(message);
+//                    System.out.println(message);
+//                //}
+                if (!inChatGroup && firstTime) {
+                    chatHistory.add(message);
+                    //System.out.println(message);
+                } else if (inChatGroup) {
                     chatHistory.add(message);
                     System.out.println(message);
+                    firstTime = false;
                 }
 
             }
@@ -78,8 +87,8 @@ public class Client {
                             inChatGroup = false;
                             System.out.println("Exited chat group.");
                         } else {
-                            //output.println("[" + clientId + "] : " + message);
-                            chatHistory.add("[" + clientId + "] : " + message);
+                            output.println("[" + clientId + "] : " + message);
+                           // chatHistory.add("[" + clientId + "] : " + message);
                         }
                     }
                 }
@@ -89,16 +98,16 @@ public class Client {
         }
     }
 
-   public void start(){
-       System.out.println("Client [" + clientId + "] Started.");
-       output.println(clientId);
+    public void start(){
+        System.out.println("Client [" + clientId + "] Started.");
+        output.println(clientId);
 
-       Thread inputThread = new Thread(this::handleInput);
-       inputThread.start();
+        Thread inputThread = new Thread(this::handleInput);
+        inputThread.start();
 
-       Thread outputThread = new Thread(this::handleOutput);
-       outputThread.start();
-   }
+        Thread outputThread = new Thread(this::handleOutput);
+        outputThread.start();
+    }
 //   public static String getClientId(){
 //       return clientId;
 //   }
