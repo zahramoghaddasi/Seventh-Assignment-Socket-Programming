@@ -2,10 +2,7 @@ package Server;
 
 import Client.Client;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -36,6 +33,8 @@ public class Server{
             clientOutputs.add(output);
             String clientId = input.readLine();
             System.out.println("Client [" + clientId + "] connected.");
+           // sendFileList(output);
+
 
             for (String message : chatHistory) {
                 output.println(message);
@@ -65,16 +64,22 @@ public class Server{
             e.printStackTrace();
         }
     }
+    public void sendFileList(PrintWriter output) {
+        File folder = new File("C:\\Users\\Click\\Desktop\\seventh\\Seventh-Assignment-Socket-Programming\\seventh_assignment\\src\\main\\java\\Server\\data");
+        File[] filesList = folder.listFiles();
+        StringBuilder fileList = new StringBuilder();
+        if (filesList != null) {
+            int i = 1;
+            for (File file : filesList) {
+                if (file.isFile() && file.getName().endsWith(".txt")) {
+                    fileList.append("(").append(i).append(") ").append(file.getName()).append("\n");
+                    i++;
+                }
+            }
+        }
+        output.println(fileList.toString());
+    }
 
-//    public void broadcastMessage(String message){
-//        for (PrintWriter clientOutput : clientOutputs) {
-//            clientOutput.println(message);
-//        }
-//    }
-//    public void sendServerMessage(String message) {
-//        //System.out.println("Server sending message: " + message);
-//        broadcastMessage("SERVER: " + message); // Sending a message from the server to all clients
-//    }
 
     public void start(){
         System.out.println("Server started. Listening for incoming connections...");
@@ -91,7 +96,6 @@ public class Server{
             e.printStackTrace();
         }
     }
-    public
 
     public static void main(String[] args) {
         // TODO: Implement the main method to start the server

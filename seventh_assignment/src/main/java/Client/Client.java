@@ -1,9 +1,6 @@
 package Client;// Client Class
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +75,9 @@ public class Client {
                         }
                     } else if ("2".equals(choice)) {
                         // Implement file download logic
-                        // ...
+
+
+
                     }
                 } else {
                     message = userInput.readLine();
@@ -97,6 +96,28 @@ public class Client {
             e.printStackTrace();
         }
     }
+    public void downloadFile(int fileIndex) {
+        try {
+            output.println(String.valueOf(fileIndex));
+            String fileName = input.readLine();
+            File receivedFile = new File("C:\\Users\\Click\\Desktop\\seventh\\Seventh-Assignment-Socket-Programming\\seventh_assignment\\src\\main\\java\\Client" + fileName);
+            PrintWriter fileWriter = new PrintWriter(new FileWriter(receivedFile));
+
+            String data;
+            while ((data = input.readLine()) != null) {
+                fileWriter.println(data);
+                if (data.equals("END_OF_FILE")) {
+                    break;
+                }
+            }
+
+            fileWriter.close();
+            System.out.println("File downloaded successfully: " + fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void start(){
         System.out.println("Client [" + clientId + "] Started.");
