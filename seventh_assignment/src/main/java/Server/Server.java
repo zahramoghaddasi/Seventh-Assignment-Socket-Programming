@@ -10,8 +10,9 @@ import java.util.concurrent.Executors;
 
 public class Server {
     private static final int PORT = 3000;
-    private static List<clientHandler> clients = new ArrayList<>();
+    private static ArrayList<Socket> clients = new ArrayList<>();
     private static ExecutorService pool = Executors.newFixedThreadPool(4);
+    private static ExecutorService poolFile = Executors.newFixedThreadPool(4);
 
     public static void main(String[] args) {
         ServerSocket listener = null;
@@ -23,14 +24,27 @@ public class Server {
                 Socket client = listener.accept();
 
                 DataInputStream in = new DataInputStream(client.getInputStream());
-                String username = in.readUTF();
-                //System.out.println(username);
-                System.out.println("[" + username + "]" + " connected to server.");
+                String op = in.readUTF();
+//                String username = in.readUTF();
+//                System.out.println(username);
 
-                clientHandler clientThread = new clientHandler(client, clients,username);
-                clients.add(clientThread);
+                if(op.equals("1")){
+                    String usernam = in.readUTF();
+                    //System.out.println("[" + username + "]" + " connected to [chat]server.");
+                    System.out.println(usernam);
 
-                pool.execute(clientThread);
+                    clientHandler clientThread = new clientHandler(client, clients);
+                    clients.add(client);
+
+                    pool.execute(clientThread);
+                } else if (op.equals("2")) {
+                    String usernam = in.readUTF();
+                    //System.out.println("[" + username + "]" + " connected to [chat]server.");
+                    System.out.println(usernam);
+                    fileHandler fileHandle = new fileHandler(client);
+                    poolFile.execute(fileHandle);
+
+                }
             }
         }
         catch (IOException e) {

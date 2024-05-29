@@ -1,71 +1,106 @@
 package Client;
 
-import Server.clientHandler;
-
 import java.io.*;
 import java.net.Socket;
-import java.util.List;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Client {
     private static final String SERVER_IP = "127.0.0.1";
     private static final int SERVER_PORT = 3000;
-    private static List<clientHandler> clients;
 
     public static void main(String[] args) {
         try {
-            Socket client = new Socket(SERVER_IP, SERVER_PORT);
-            DataOutputStream out = new DataOutputStream(client.getOutputStream());
+//            Socket client = new Socket(SERVER_IP, SERVER_PORT);
+//            DataOutputStream out = new DataOutputStream(client.getOutputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
             System.out.print("Enter your name: ");
             String username = reader.readLine();
-            out.writeUTF(username);
-            System.out.println("Client  [" + username + "]" + " Started .");
+            System.out.println("Client [" + username + "] Started.");
+//            out.writeUTF(username);
 
-            serverHandler handleServerResponse = new serverHandler(client, username);
-            new Thread(handleServerResponse).start();
-            // clientHandler clientHandler = new clientHandler(client, clients,username );
-
-            Scanner scanner = new Scanner(System.in);
-            String userInput;
             boolean inChat = false;
+            while (true){
+                // if(!inChat){
+                System.out.println("Select an option:");
+                System.out.println("1. Enter the chat group");
+                System.out.println("2. Download a file from the server");
+                System.out.print("Enter your choice: ");
 
-            while (true) {
-                if (!inChat) {
-                    System.out.println("Select an option:");
-                    System.out.println("1. Enter the chat group");
-                    System.out.println("2. Download a file from the server");
-                    System.out.print("Enter your choice: ");
-                    userInput = scanner.nextLine();
-                    // out.writeUTF(userInput);
+                String choice = reader.readLine();
 
-                    if (userInput.equals("1")) {
-                        System.out.println("Now you join the chat group.if you want back to menu enter /menu.");
-                        inChat = true;
-                        handleServerResponse.printMessageHistory();
-                        //clientHandler.printMessageHistory();
 
-                    }
-                    else if (userInput.equals("/menu")) {
-                        System.out.println("Returning to main menu...");
-                        inChat = false;
-                    }
+                if (choice.equals("1")) {
+                    System.out.println("You have joined the chat group. To return to the menu, enter /menu.");
+                    inChat = true;
+                    chat(username,reader);
+                    continue;
+
+                }
+                else if (choice.equals("2")) {
+                    downloadFile(username,reader);
                 }
                 else {
-                    userInput = reader.readLine();
-                    if (userInput.equals("/menu")) {
-                        // out.writeUTF(userInput);
-                        inChat = false;
-                        System.out.println("Returning to main menu...");
-                    } else {
-                        out.writeUTF(userInput);
-                    }
+                    System.out.println("Invalid Choice");
+                    continue;
                 }
+                // }
+//                else {
+//                    String userInput = reader.readLine();
+//                    if (userInput.equals("/menu")) {
+//                        inChat = false;
+//                        System.out.println("Returning to main menu...");
+//                        break;
+//                    }
+//                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void downloadFile(String user,BufferedReader reader) throws IOException {
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Socket client = new Socket(SERVER_IP, SERVER_PORT);
+        DataOutputStream out = new DataOutputStream(client.getOutputStream());
+        out.writeUTF("2");
+        out.writeUTF("[" + user + "] Connected to Downlod server ");
+
+
+        serverHandler serverHandle = new serverHandler(client, new ArrayList<>());
+        new Thread(serverHandle).start();
+
+        String userInput = reader.readLine();
+        out.writeUTF(userInput);
+        while (true) {
+            userInput = reader.readLine();
+            if (userInput.equals("/menu")) {
+                System.out.println("Returning to main menu...");
+                break;
             }
         }
-        catch (IOException e) {
-            e.printStackTrace();
+
+    }
+
+    public static void chat(String name , BufferedReader reader) throws IOException {
+        //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Socket client = new Socket(SERVER_IP , SERVER_PORT);
+        DataOutputStream out = new DataOutputStream(client.getOutputStream());
+        out.writeUTF("1");
+
+        out.writeUTF( "[" + name + "] Connected to Chat server ");
+        //  System.out.println("[" + name + "] Join chat");
+
+        serverHandler serverHandle = new serverHandler(client, new ArrayList<>());
+        new Thread(serverHandle).start();
+        String userInput;
+
+        while (true) {
+            userInput = reader.readLine();
+            if (userInput.equals("/menu")) {
+                System.out.println("Returning to main menu...");
+                break;
+            }
+            out.writeUTF("[" + name + "]: " + userInput);
         }
     }
 }
